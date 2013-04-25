@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_mcf_team_BidProject" items="${bidprojects}" z="aO5qPoGlykO0oMwR3RW7811/zYE=">
+        <table:table data="${bidprojects}" id="l_com_mcf_team_BidProject" path="/bidprojects" z="KHmiqUOgZwjC7nRQZRFIgNIOdsU=">
+            <table:column id="c_com_mcf_team_BidProject_bidId" property="bidId" z="t7IfnmZPM8WeyTtcXqVGEAT7piY="/>
+            <table:column date="true" dateTimePattern="${bidProject_startdate_date_format}" id="c_com_mcf_team_BidProject_startDate" property="startDate" z="GVqoVe60Bs1AUTI9mRGLwHxtf3U="/>
+            <table:column date="true" dateTimePattern="${bidProject_enddate_date_format}" id="c_com_mcf_team_BidProject_endDate" property="endDate" z="Sikkpht8w3SuWgTstMjZ6dRlVIQ="/>
+        </table:table>
+    </page:list>
+</div>

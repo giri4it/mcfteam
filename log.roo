@@ -1,0 +1,42 @@
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-04-24 17:56:13
+hint
+project --topLevelPackage com.mcf.team
+persistence setup --provider ECLIPSELINK --database MYSQL
+entity jpa --class com.mcf.team.BidProject 
+field string --fieldName bidId
+field date --fieldName startDate --type java.util.Date
+field date --fieldName endDate --type java.util.Date
+entity jpa --class privilege
+field string --fieldName privilegeId
+field string --fieldName privilegeName
+// [failed] entity jpa --class ~.Role 
+// [failed] entity jpa --class com.mcf.team.Role 
+entity jpa --class com.mcf.team.UserRole
+field string --fieldName roleId
+field string --fieldName roleName
+// [failed] entity jpa --class com.mcf.team.User
+entity jpa --class com.mcf.team.Profile
+field string --fieldName profileId
+field string --fieldName userName
+field set --fieldName roles --type ~.UserRole --cardinality ONE_TO_MANY 
+// [failed] database reverse engineer --package com.mcf.team.domain --schema PUBLIC
+addon search --requiresDescription "#jdbcdriver,driverclass:com.mysql.jdbc.Driver"
+// [failed] database reverse engineer --package com.mcf.team.domain --schema PUBLIC
+addon search --requiresDescription "#jdbcdriver,driverclass:com.mysql.jdbc.Driver"
+// [failed] database reverse engineer --package com.mcf.team.domain --schema mcfteam
+persistence setup --provider ECLIPSELINK --database MYSQL --databaseName mcfteam --userName root
+// [failed] database reverse engineer --package com.mcf.team.domain --schema mcfteam
+osgi obr url add --url http://spring-roo-repository.springsource.org/repository.xml
+osgi obr deploy --bundleSymbolicName org.springframework.roo.wrapping.mysql-connector-java
+database reverse engineer --package com.mcf.team.domain --schema mcfteam
+controller scaffold --entity ~.BidProject --class ~.web.BidProjectController
+controller scaffold --entity ~.Profile --class ~.web.ProfileController
+controller all --package ~.web
+repository jpa --interface ~.repository.BidProjectRepository --entity ~.BidProject
+entity jpa --class com.mcf.team.Player
+field string --fieldName playerId
+field string --fieldName playerName
+entity jpa --class com.mcf.team.Team
+field string --fieldName teamId
+field string --fieldName teamName
+field set --fieldName players --type ~.Player --cardinality ONE_TO_MANY 

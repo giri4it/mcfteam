@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="privileges/list">
+        <put-attribute name="body" value="/WEB-INF/views/privileges/list.jspx"/>
+    </definition>
+<definition extends="default" name="privileges/show">
+        <put-attribute name="body" value="/WEB-INF/views/privileges/show.jspx"/>
+    </definition>
+<definition extends="default" name="privileges/create">
+        <put-attribute name="body" value="/WEB-INF/views/privileges/create.jspx"/>
+    </definition>
+<definition extends="default" name="privileges/update">
+        <put-attribute name="body" value="/WEB-INF/views/privileges/update.jspx"/>
+    </definition>
+</tiles-definitions>
