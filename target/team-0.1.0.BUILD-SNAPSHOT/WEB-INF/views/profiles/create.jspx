@@ -6,6 +6,7 @@
         <field:input field="profileId" id="c_com_mcf_team_Profile_profileId" z="I1YPM4Ieay5Mg2M79w4SwrQrfEM="/>
         <field:input field="userName" id="c_com_mcf_team_Profile_userName" z="g3eE4g2yyar7O+WuoIdgqslmMXo="/>
         <field:simple field="roles" id="c_com_mcf_team_Profile_roles" messageCode="entity_reference_not_managed" messageCodeAttribute="User Role" z="mwYRT1wOZgke78v8o/eo+GO3Sn4="/>
+        <field:checkbox field="isManager" id="c_com_mcf_team_Profile_isManager" z="gXWGdi+C2BjMlnFRChGQwFMPj3E="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_mcf_team_Profile" render="${not empty dependencies}" z="a8gZ5ZEhVyj4YGmkgb0FdWlsACk="/>
 </div>

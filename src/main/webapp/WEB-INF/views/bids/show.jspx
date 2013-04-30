@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_mcf_team_Bid" object="${bid}" path="/bids" z="CS9cgkhKvsoKsXW/4LsuAeQVDGQ=">
+        <field:display field="bidValue" id="s_com_mcf_team_Bid_bidValue" object="${bid}" z="7wCUVX1dZvqcITBKugBXErr8bTA="/>
+        <field:display date="true" dateTimePattern="${bid_biddate_date_format}" field="bidDate" id="s_com_mcf_team_Bid_bidDate" object="${bid}" z="OOQlYjXgKK0SxUt2LfkaWVd88ro="/>
+        <field:display field="player" id="s_com_mcf_team_Bid_player" object="${bid}" z="gEIkuPh4PFW+HvpMWyOU5mzGadE="/>
+    </page:show>
+</div>

@@ -33,4 +33,12 @@ privileged aspect Profile_Roo_JavaBean {
         this.roles = roles;
     }
     
+    public Boolean Profile.getIsManager() {
+        return this.isManager;
+    }
+    
+    public void Profile.setIsManager(Boolean isManager) {
+        this.isManager = isManager;
+    }
+    
 }

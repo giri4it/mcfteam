@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_mcf_team_Player" modelAttribute="player" path="/players" render="${empty dependencies}" z="lO4qWcd83w9i6N7PXRVH0jr8xRY=">
+        <field:input field="playerId" id="c_com_mcf_team_Player_playerId" z="ikGmYznpf/Cb/hBszEdPsTuLSac="/>
+        <field:input field="playerName" id="c_com_mcf_team_Player_playerName" z="5FYmD7fqpRx7ZUO3DHAdnDlHUps="/>
+        <field:select field="profile" id="c_com_mcf_team_Player_profile" itemValue="id" items="${profiles}" path="/profiles" z="W8tK2Al7Y/zB0RY/p1hT/tj+VQQ="/>
+        <field:input decimalMax="9999999.99" decimalMin="10" field="initialCost" id="c_com_mcf_team_Player_initialCost" required="true" validationMessageCode="field_invalid_number" z="0E43RFKZSQRCxhZj1+M8K27zbJc="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_mcf_team_Player" render="${not empty dependencies}" z="D37UP1XrAiiRdPKeDu9r5yro/iY="/>
+</div>

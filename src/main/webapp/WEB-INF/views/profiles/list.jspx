@@ -6,6 +6,7 @@
         <table:table data="${profiles}" id="l_com_mcf_team_Profile" path="/profiles" z="wn2td0Yp+BI/f2CSFUOmHUP/GLI=">
             <table:column id="c_com_mcf_team_Profile_profileId" property="profileId" z="DS399kGtleD/xVIf6XSunWV0MtI="/>
             <table:column id="c_com_mcf_team_Profile_userName" property="userName" z="CUbLdRskVQrh0j2r8z+W9w4SClI="/>
+            <table:column id="c_com_mcf_team_Profile_isManager" property="isManager" z="F7ich+m/FYf1RpNA/7ay7SLdy/E="/>
         </table:table>
     </page:list>
 </div>

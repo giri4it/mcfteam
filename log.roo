@@ -40,3 +40,51 @@ entity jpa --class com.mcf.team.Team
 field string --fieldName teamId
 field string --fieldName teamName
 field set --fieldName players --type ~.Player --cardinality ONE_TO_MANY 
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-04-30 13:22:27
+security setup
+entity jpa --class ~.security.Principal --table  security_principals
+field string --fieldName username --notNull --sizeMax 50 --sizeMin 3
+field string --fieldName password --notNull --sizeMax 50 --sizeMin 3
+field boolean --fieldName enabled
+focus --class ~.UserRole 
+// [failed] field string --fieldName roleId --notNull --sizeMax 10 --sizeMin 8
+entity jpa --class ~.security.Principal.RolePrincipalAssignment --table security_role_assignments 
+field reference --fieldName username --type ~.security.Principal
+// [failed] field reference --fieldName roleId --type ~.security.UserRole
+field reference --fieldName roleId --type ~.UserRole
+web mvc scaffold --class ~.web.security.UserController --backingType ~.security.Principal --path /security/users
+web mvc scaffold --class ~.web.security.RoleController --backingType ~.UserRole --path /security/roles
+web mvc scaffold --class ~.web.security.RoleMappingController --backingType ~.security.RolePrincipalAssignment --path /security/assignments
+web mvc scaffold --class ~.web.security.RoleMappingController --backingType ~.security.principal.RolePrincipalAssignment --path /security/assignments
+web mvc all --package ~.web
+pgp automatic trust
+addon install bundle --bundleSymbolicName org.springframework.roo.addon.git
+hint
+hint topics
+focus --class ~.Profile
+field boolean --fieldName isManager
+focus --class ~.Player
+field reference --fieldName profile --type ~.Profile
+// [failed] field reference --fieldName profile --type ~.Profile --cardinality ONE_TO_ONE 
+// [failed] field reference --fieldName profile --type ~.Profile --cardinality ONE_TO_ONE 
+field reference --fieldName profile --type ~.Profile --cardinality ONE_TO_ONE 
+entity jpa --class ~.Manager 
+field reference --fieldName profile --type ~.Profile --cardinality ONE_TO_ONE 
+focus --class ~.Player
+field reference --fieldName profile --type ~.Profile --cardinality ONE_TO_ONE --joinColumnName profileId 
+focus --class ~.Manager 
+field reference --fieldName profile --type ~.Profile --cardinality ONE_TO_ONE --joinColumnName profileId
+focus --class ~.Player
+field number --fieldName initialCost --type java.math.BigDecimal --decimalMin 10 --decimalMax 9999999.99 --notNull
+entity jpa --class ~.Bid --table bids 
+field string --fieldName bidId --sizeMax 50 --notNull
+// [failed] field reference --fieldName player --type ~.Player --joinColumnName playerId --cardinality ONE_TO_MANY 
+field set --fieldName player --type ~.Player --cardinality ONE_TO_MANY --mappedBy playerBids
+field number --fieldName bidValue --type java.math.BigDecimal --notNull --decimalMin 10 --decimalMax 9999999
+field date --fieldName bidDate --type java.util.Date --notNull
+controller scaffold --entity ~.Bid --class ~.web.BidController
+focus --class ~.Player
+focus --class ~.Bid
+field reference --fieldName player --type ~.Player --cardinality ONE_TO_ONE --joinColumnName playerId
+field string --fieldName bidId --unique --notNull --transient 
+field string --fieldName bidId 

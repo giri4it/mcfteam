@@ -5,5 +5,6 @@
     <page:show id="ps_com_mcf_team_Profile" object="${profile}" path="/profiles" z="LNOypkYcUeq4JFnkCnnlbTxv/ic=">
         <field:display field="profileId" id="s_com_mcf_team_Profile_profileId" object="${profile}" z="oGGZpKGYTSJpveQ13ka1F/hDdhg="/>
         <field:display field="userName" id="s_com_mcf_team_Profile_userName" object="${profile}" z="kTJ04gx+ID17QJbXbwNWti8VMm4="/>
+        <field:display field="isManager" id="s_com_mcf_team_Profile_isManager" object="${profile}" z="GmTqwG0h+9DH6wZCPqrRtESxtew="/>
     </page:show>
 </div>

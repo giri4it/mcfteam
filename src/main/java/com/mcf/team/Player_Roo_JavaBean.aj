@@ -4,6 +4,8 @@
 package com.mcf.team;
 
 import com.mcf.team.Player;
+import com.mcf.team.Profile;
+import java.math.BigDecimal;
 
 privileged aspect Player_Roo_JavaBean {
     
@@ -21,6 +23,22 @@ privileged aspect Player_Roo_JavaBean {
     
     public void Player.setPlayerName(String playerName) {
         this.playerName = playerName;
+    }
+    
+    public Profile Player.getProfile() {
+        return this.profile;
+    }
+    
+    public void Player.setProfile(Profile profile) {
+        this.profile = profile;
+    }
+    
+    public BigDecimal Player.getInitialCost() {
+        return this.initialCost;
+    }
+    
+    public void Player.setInitialCost(BigDecimal initialCost) {
+        this.initialCost = initialCost;
     }
     
 }

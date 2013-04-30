@@ -4,11 +4,13 @@
 package com.mcf.team.web;
 
 import com.mcf.team.BidProject;
+import com.mcf.team.repository.BidProjectRepository;
 import com.mcf.team.web.BidProjectController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.joda.time.format.DateTimeFormat;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,9 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect BidProjectController_Roo_Controller {
     
+    @Autowired
+    BidProjectRepository BidProjectController.bidProjectRepository;
+    
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String BidProjectController.create(@Valid BidProject bidProject, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
@@ -28,7 +33,7 @@ privileged aspect BidProjectController_Roo_Controller {
             return "bidprojects/create";
         }
         uiModel.asMap().clear();
-        bidProject.persist();
+        bidProjectRepository.save(bidProject);
         return "redirect:/bidprojects/" + encodeUrlPathSegment(bidProject.getId().toString(), httpServletRequest);
     }
     
@@ -41,7 +46,7 @@ privileged aspect BidProjectController_Roo_Controller {
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String BidProjectController.show(@PathVariable("id") Long id, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("bidproject", BidProject.findBidProject(id));
+        uiModel.addAttribute("bidproject", bidProjectRepository.findOne(id));
         uiModel.addAttribute("itemId", id);
         return "bidprojects/show";
     }
@@ -51,11 +56,11 @@ privileged aspect BidProjectController_Roo_Controller {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("bidprojects", BidProject.findBidProjectEntries(firstResult, sizeNo));
-            float nrOfPages = (float) BidProject.countBidProjects() / sizeNo;
+            uiModel.addAttribute("bidprojects", bidProjectRepository.findAll(new org.springframework.data.domain.PageRequest(firstResult / sizeNo, sizeNo)).getContent());
+            float nrOfPages = (float) bidProjectRepository.count() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("bidprojects", BidProject.findAllBidProjects());
+            uiModel.addAttribute("bidprojects", bidProjectRepository.findAll());
         }
         addDateTimeFormatPatterns(uiModel);
         return "bidprojects/list";
@@ -68,20 +73,20 @@ privileged aspect BidProjectController_Roo_Controller {
             return "bidprojects/update";
         }
         uiModel.asMap().clear();
-        bidProject.merge();
+        bidProjectRepository.save(bidProject);
         return "redirect:/bidprojects/" + encodeUrlPathSegment(bidProject.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String BidProjectController.updateForm(@PathVariable("id") Long id, Model uiModel) {
-        populateEditForm(uiModel, BidProject.findBidProject(id));
+        populateEditForm(uiModel, bidProjectRepository.findOne(id));
         return "bidprojects/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
     public String BidProjectController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        BidProject bidProject = BidProject.findBidProject(id);
-        bidProject.remove();
+        BidProject bidProject = bidProjectRepository.findOne(id);
+        bidProjectRepository.delete(bidProject);
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());

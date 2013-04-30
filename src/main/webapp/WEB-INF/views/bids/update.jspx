@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_mcf_team_Bid" modelAttribute="bid" path="/bids" versionField="Version" z="77Ov+Prllx+WK5PdRwUtrWoH3Ts=">
+        <field:input decimalMax="9999999" decimalMin="10" field="bidValue" id="c_com_mcf_team_Bid_bidValue" required="true" validationMessageCode="field_invalid_number" z="+KKi9Od2nIO76ST1Ls+XiWru99c="/>
+        <field:datetime dateTimePattern="${bid_biddate_date_format}" field="bidDate" id="c_com_mcf_team_Bid_bidDate" required="true" z="k58FzdFCNGbRhWYJSxKSK5XT1q8="/>
+        <field:select field="player" id="c_com_mcf_team_Bid_player" itemValue="id" items="${players}" path="/players" z="eXNdvWFkeVTD++d8RCnvoqVfTrw="/>
+    </form:update>
+</div>

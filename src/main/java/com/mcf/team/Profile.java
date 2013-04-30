@@ -19,4 +19,6 @@ public class Profile {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<UserRole> roles = new HashSet<UserRole>();
+
+    private Boolean isManager;
 }

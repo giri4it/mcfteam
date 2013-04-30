@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_mcf_team_Player" object="${player}" path="/players" z="khWFr2zaM/v8DJMHIX1xVyO+ENs=">
+        <field:display field="playerId" id="s_com_mcf_team_Player_playerId" object="${player}" z="nQhrUMGCehWIzHZDsqBPEY0Ap2M="/>
+        <field:display field="playerName" id="s_com_mcf_team_Player_playerName" object="${player}" z="BlIpUlZWCdM9OBYUzesQBiwbDkE="/>
+        <field:display field="profile" id="s_com_mcf_team_Player_profile" object="${player}" z="aMmisYMXfgRTz8i1bdYt4uggFs4="/>
+        <field:display field="initialCost" id="s_com_mcf_team_Player_initialCost" object="${player}" z="ymSdkrb5uY4Y26jETTABgwIcXIY="/>
+    </page:show>
+</div>
